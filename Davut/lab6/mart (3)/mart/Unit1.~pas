@@ -1,0 +1,575 @@
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ComCtrls, Grids, Buttons;
+
+type
+  TForm1 = class(TForm)
+    ed1: TEdit;
+    ud1: TUpDown;
+    trbar1: TTrackBar;
+    pgc1: TPageControl;
+    ts1: TTabSheet;
+    ts2: TTabSheet;
+    ts3: TTabSheet;
+    ts4: TTabSheet;
+    ts5: TTabSheet;
+    ts6: TTabSheet;
+    ts7: TTabSheet;
+    ts8: TTabSheet;
+    ed2: TEdit;
+    ed3: TEdit;
+    ed4: TEdit;
+    ud2: TUpDown;
+    ud3: TUpDown;
+    ud4: TUpDown;
+    l1: TLabel;
+    l2: TLabel;
+    l4: TLabel;
+    l3: TLabel;
+    sg1: TStringGrid;
+    sg2: TStringGrid;
+    l5: TLabel;
+    l6: TLabel;
+    btn1: TButton;
+    btn2: TButton;
+    btn3: TButton;
+    btn4: TButton;
+    btn5: TBitBtn;
+    tsg1: TStringGrid;
+    tlb1: TLabel;
+    tlb2: TLabel;
+    tsg2: TStringGrid;
+    tlb3: TLabel;
+    tsg3: TStringGrid;
+    tsg4: TStringGrid;
+    tlb4: TLabel;
+    tlb5: TLabel;
+    tsg5: TStringGrid;
+    tsg6: TStringGrid;
+    tlb6: TLabel;
+    tsg7: TStringGrid;
+    tlb8: TLabel;
+    ed5: TEdit;
+    l7: TLabel;
+    dlgOpen1: TOpenDialog;
+    dsave1: TSaveDialog;
+    MonthCalendar1: TMonthCalendar;
+    procedure FormClick(Sender: TObject);
+    procedure btn2Click(Sender: TObject);
+    procedure btn1Click(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure sg1KeyPress(Sender: TObject; var Key: Char);
+    procedure sg2KeyPress(Sender: TObject; var Key: Char);
+    procedure btn3Click(Sender: TObject);
+    procedure btn4Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  A:array of array of  real;
+  B:array of array of Real;
+  A1:array of array of real;
+  C:array of array of real;
+    D:array of array of real;
+      d1:array of array of real;
+   A2:array of array of real;
+     A3:array of array of real;
+
+implementation
+
+
+
+
+function E():longint;
+var i,n,j,m,p,q:longint;
+begin
+  E:=0;
+m:=Form1.ud1.position;
+n:=Form1.ud2.position;
+p:=Form1.ud3.position;
+q:=Form1.ud4.position;
+  for i:=1 to m do
+    for j:=1 to n do
+    begin
+      if Form1.SG1.Cells[j,i]='' then
+      begin
+        MessageDlg('Заполни всю матрицу!',mtError,[MbOk],0);
+        E:=1;
+        exit;
+      end;
+  end;
+   for i:=1 to p do
+    for j:=1 to q do
+    begin
+      if Form1.SG2.Cells[j,i]='' then
+      begin
+        MessageDlg('Заполни всю матрицу!',mtError,[MbOk],0);
+        E:=1;
+        exit;
+      end;
+  end;
+end;
+
+{$R *.dfm}
+{procedure sort;
+var m,n,p,q,i,j,k,m1,n1,p1,q1,i1,j1,i2,j2,h:integer;
+d,det,s,r:real;
+begin
+m:=strtoint(Form1.ed1.Text);
+n:=strtoint(Form1.ed2.Text);
+SetLength(A,m+1,n+1);
+Form1.tsg7.Rowcount:=m+1;
+Form1.tsg7.Colcount:=n+1;
+
+
+
+ for i:=1 to m do                //сортировка
+    for j:=1 to n-1 do
+    if  A[i,j]>A[i,j+1] then
+    begin
+      r:=A[i,j];
+      A[i,j]:=A[i,j+1];
+      A[i,j+1]:=r;
+      h:=i;
+      while (A[i,h]<A[i,h-1]) and (h>1) do begin
+      r:=A[i,h];
+      A[i,h]:=A[i,h-1];
+      A[i,h-1]:=r;
+      h:=h-1;
+    end;
+  end;
+  for i:=1 to m do
+for j:=1 to n do
+Form1.tSG7.cells[j,i]:=floattostr(A[i,j]);
+end;}
+
+procedure TForm1.FormClick(Sender: TObject);
+var m,n,p,q,i:integer;
+begin
+Sg1.Visible:=true;
+Sg2.Visible:=true;
+l5.Visible:=true;
+l6.Visible:=true;
+m:=strtoint(ed1.Text);
+n:=strtoint(ed2.Text);
+p:=strtoint(ed3.Text);
+q:=strtoint(ed4.Text);
+for i:=1 to m do sg1.RowCount:=i+1;
+for i:=1 to n do sg1.ColCount:=i+1;
+for i:=1 to p do sg2.RowCount:=i+1;
+for i:=1 to q do sg2.ColCount:=i+1;
+end;
+
+procedure TForm1.btn2Click(Sender: TObject);
+begin
+l1.Visible:=true;
+l2.Visible:=true;
+l3.Visible:=true;
+l4.Visible:=true;
+ed1.Visible:=True;
+ed2.Visible:=True;
+ed3.Visible:=True;
+ed4.Visible:=True;
+trbar1.Visible:=true;
+ud1.visible:=true;
+ud2.visible:=true;
+ud3.visible:=true;
+ud4.visible:=true;
+
+end;
+
+procedure TForm1.btn1Click(Sender: TObject);
+var m,n,p,q,i,j,k,m1,n1,p1,q1,i1,j1,i2,j2,h,k1,k2,t,r2:integer;
+d,det,s,r,buf,r1,g:real;
+s1:string;
+begin
+If E()=1 then exit;
+pgc1.Visible:=true;
+m:=strtoint(ed1.Text);
+n:=strtoint(ed2.Text);
+p:=strtoint(ed3.Text);
+q:=strtoint(ed4.Text);
+m1:=strtoint(ed1.Text);
+n1:=strtoint(ed2.Text);
+p1:=strtoint(ed3.Text);
+q1:=strtoint(ed4.Text);
+tsg4.RowCount:=m+1;
+tsg4.ColCount:=n+1;
+Setlength(A,m+1,n+1);
+Setlength(B,p+1,q+1);
+SetLength(A1,m+1,n+1);
+SetLength(A2,m+1,n+1);
+SetLength(A3,m+1,n+1);
+SetLength(C,m+1,n+1);
+
+
+  for i1:=1 to m1 do
+    for j1:=1 to n1 do
+      A[i1,j1]:=strtoint(Sg1.Cells[j1,i1]);
+  for i2:=1 to p1 do
+    for j2:=1 to q1 do
+      B[i2,j2]:=strtoint(Sg2.Cells[j2,i2]);
+
+       for i:=1 to m do                //сортировка
+    for j:=1 to n-1 do
+    if  A[i,j]>A[i,j+1] then
+    begin
+      r:=A[i,j];
+      A[i,j]:=A[i,j+1];
+      A[i,j+1]:=r;
+      h:=i;
+      while (A[i,h]<A[i,h-1]) and (h>1) do begin
+      r:=A[i,h];
+      A[i,h]:=A[i,h-1];
+      A[i,h-1]:=r;
+      h:=h-1;
+    end;
+  end;
+  for i:=1 to m do
+for j:=1 to n do
+Form1.tSG7.cells[j,i]:=floattostr(A[i,j]);
+
+if m=q then                      //A*B
+begin
+  tsg3.Visible:=true;
+  tsg3.RowCount:=m+1;
+  tsg3.Colcount:=q+1;
+  for i:=1 to m do
+    for j:=1 to q do
+    begin
+      s:=0;
+      for k:=1 to n do
+        s:=s+A[i,k]*B[k,j];
+        tsg3.cells[j,i]:=floattostr(s);
+
+    end;
+end;
+
+for i:=1 to m do
+  for j:=1 to n do
+      tSG4.Cells[j,i]:=floatTostr(A[i,j]*trbar1.Position);      //a*A
+
+   for i:=1 to m do
+      for j:=1 to n do
+          begin
+            tSG6.Cells[i,j]:=floatToStr(a[i,j]);//транспонированная
+          end;
+if (m=p) and (n=q) then
+   begin
+       tSG1.Visible:=True;
+       tSG2.Visible:=True;
+       tsg1.colCount:=n+1;
+       tsg1.rowCount:=m+1;
+       tsg2.colCount:=n+1;
+       tsg2.rowCount:=m+1;
+      for i:=1 to n do
+        for j:=1 to k do
+          begin
+              tSG1.Cells[j,i]:=floatToStr(a[i,j]+b[i,j]);    //A+B
+               tSG2.Cells[j,i]:=floatToStr(a[i,j]-b[i,j]);  //A-B
+           end;
+     end;
+
+   {if (m=n) and (a[1,1]=0) then        //det
+      begin
+        SetLength(a1,m,n);
+        For i:=1 to n do
+        For j:=1 to n do
+          A1[I,j]:=A[I,j];
+          if a1[1,1]=0 then
+             begin
+              g:=1;
+              for i:=1 to n do
+               if a1[i,1]<>0 then g:=i;
+                for j:=1 to n do
+                   begin
+                     buf:=a1[1,j];
+                      a1[1,j]:=a1[g,j];
+                      a1[g,j]:=buf;
+                   end;
+                 det:=(-1)*det;
+                if g=1 then
+                   begin
+                     det:=1;
+                   end;
+             end;
+
+    ed5.visible:=true;
+    l7.Visible:=false;
+    ed5.text:=FloatToStr(det);
+   end; }
+
+
+  { if (m=n)  then                 //det
+     begin
+       ed5.Visible:=True;
+       tlb8.Visible:=True;
+        l7.Visible:=false;
+
+       if a[1,1]=0 then
+         begin
+          For i:=1 to n do
+          For j:=1 to n do
+          c[I,j]:=a1[I,j];
+          end
+              else
+          begin
+             For i:=1 to n do
+              For j:=1 to n do
+              c[I,j]:=a[I,j];
+          end;
+
+
+      For h:=1 to n do
+      For i:=h+1 to n-1 do
+      Begin
+         For j:=h+1 to n-1 do
+         c[I,j]:=c[I,j]-c[h,j]/c[h,h]*c[I,h];
+      End;
+
+      for i:=1 to n do
+       det:=det*c[i,i];
+       ed5.text:=FloatToStr(det);
+   end;}
+
+   //Определитель
+       if (pgc1.ActivePageIndex=7) or (pgc1.ActivePageIndex=4) then
+       begin
+      m:=StrToInt(ed1.Text);
+      n:=StrToInt(ed2.Text);
+      SetLength(a2,m+1,n+1);
+       for i:=1 to m do
+       for j:=1 to n do
+        a2[i,j]:=strtoint(sg1.Cells[j,i]);
+        if n<>m then
+       begin
+         ed5.Visible:=False;
+         L7.Visible:=True;
+       end
+       else
+       begin
+           ed5.Visible:=True;
+           L7.Visible:=False;
+           If n=1 then
+             begin
+               d:=a2[1,1];
+               Ed5.Text:=floatToStr(d);
+             end;
+           If n=2 then
+            begin
+              d:=a2[1,1]*a2[2,2]-a2[1,2]*a2[2,1];
+              ed5.Text:=floatToStr(d);
+            end;
+           if n>2 then
+             begin
+               for k:=1 to n do
+                begin
+                  if a2[k,k]=0 then
+                   for k1:=k+1 to n do
+                    for k2:=k+1 to n do
+                     begin
+                      r1:=a2[k1,k2];
+                      a2[k1,k2]:=a2[k,k2];
+                      a2[k,k2]:=r1;
+                     end;
+                  for i:=k+1 to n do
+                   begin
+                     r1:=a2[i,k];
+                     for j:=k to n do
+                      a2[i,j]:=a2[i,j]-r1*(a2[k,j]/a2[k,k]);
+                   end;
+                end;
+                d:=1;
+                for i:=1 to n do
+                 d:=d*a2[i,i];
+                ed5.Text:=floatToStr(d);
+             end;
+         end;
+
+         end;
+
+   //Обратная матрица
+  if pgc1.ActivePageIndex=4 then
+    begin
+      m:=StrToInt(ed1.Text);
+      n:=StrToInt(ed2.Text);
+      SetLength(a2,m+1,n+1);
+      SetLength(a1,m+1,n+1);
+      SetLength(d1,m+1,n+1);
+      if (d=0) or (m<>n) then
+       begin
+         tlb5.Visible:=True;
+         tsg5.Visible:=False;
+       end else
+      begin
+
+        tlb5.Visible:=False;
+         tsg5.Visible:=True;
+         tsg5.RowCount:=m+1;
+         tsg5.ColCount:=n+1;
+      for i:=1 to n do
+       for j:=1 to n do
+        a2[i,j]:=strtofloat(sg1.Cells[j,i]);
+      for i:=1 to n do
+       for j:=1 to n do
+         a1[i,j]:=a2[i,j];
+      for k:=1 to n do
+       begin
+         for i:=1 to n do
+          for j:=1 to n do
+           begin
+             if((i<>k)and(j<>k))then
+              d1[i,j]:=a1[i,j]-a1[k,j]*a1[i,k]/a1[k,k];
+             if((i=k)and(j<>k))then
+              d1[i,j]:=a1[k,j]/a1[k,k];
+             if((i<>k)and(j=k))then
+              d1[i,j]:=-a1[i,k]/a1[k,k];
+             if((i=k)and(j=k))then
+              d1[i,j]:=1/a1[k,k];
+           end;
+         for i:=1 to n do
+          for j:=1 to n do
+            begin
+              a1[i,j]:=d1[i,j];
+              Str(d1[j,i]:6:2,s1);
+              tsg5.Cells[i,j]:=s1;
+            end;
+       end;
+      end;
+    end;
+
+
+      end;
+
+
+
+
+procedure TForm1.FormActivate(Sender: TObject);
+begin
+pgc1.Visible:=false;
+end;
+
+procedure TForm1.sg1KeyPress(Sender: TObject; var Key: Char);
+var key1:string;i,n:integer;
+begin
+  n:=strtoint(ed1.text);
+  for i:=1 to n do
+  begin
+    If not (Key in ['0'..'9',#8,#45]) then
+    Key:=#0;
+  end;
+
+end;
+
+procedure TForm1.sg2KeyPress(Sender: TObject; var Key: Char);
+var key1:string;i,n:integer;
+begin
+  n:=strtoint(ed1.text);
+  for i:=1 to n do
+  begin
+    If not (Key in ['0'..'9',#8,#45]) then
+    Key:=#0;
+  end;
+
+end;
+
+procedure TForm1.btn3Click(Sender: TObject);
+var
+f:TextFile;
+s:string;
+i,j,n,m,p,q,i1,j1,i2,j2:integer;
+begin
+   if E =1 then exit;
+DSave1.Filter:='Текстовые файлы|*.txt|';
+   m:=strtoint(ed1.text);
+   n:=strtoint(ed2.text);
+   p:=strtoint(ed3.text);
+   q:=strtoint(ed4.text);
+   SetLength(A,m+1,n+1);
+   SetLength(B,p+1,q+1);
+
+if DSave1.Execute then
+begin
+//открываем файл
+AssignFile (f,DSave1.Filename);
+Rewrite(f);
+writeln (f,m);
+writeln (f,n);
+writeln (f,p);
+writeln (f,q);
+writeln (f,trbar1.position);
+  for i1:=1 to m do
+    for j1:=1 to n do
+      A[i1,j1]:=strtoint(Sg1.Cells[j1,i1]);
+  for i2:=1 to p do
+    for j2:=1 to q do
+      B[i2,j2]:=strtoint(Sg2.Cells[j2,i2]);
+
+for i:=1 to m do
+begin
+   for j:=1 to n do
+      writeln(f,floattostr(a[I,J]));//работаем с векторами и матрицами !!! A[i]
+      end;
+for i:=1 to p do
+begin
+   for j:=1 to q do
+      writeln(f,floattostr(B[I,J]));//работаем с векторами и матрицами !!! A[i]
+      end;
+CloseFile (f);
+end;
+end;
+
+procedure TForm1.btn4Click(Sender: TObject);
+var
+  i,j,n,m,p,q,tr:integer;
+  f:TextFile;
+  s1,s2:string;
+begin
+//n:=strtoint(edit1.text);
+DlgOpen1.Filter:='Текстовые файлы|*.txt|';
+if DlgOpen1.Execute and FileExists(DlgOpen1.Filename) then
+begin
+//открываем файл
+AssignFile (f,DlgOpen1.Filename);
+Reset(f);
+
+readln(f,m);
+readln(f,n);
+readln(f,p);
+readln(f,q);
+readln (f,tr);
+for i:=1 to m do
+for j:=1 to n do
+ begin
+     readln (f,s1);
+       SG1.cells[i,j]:=s1; //работаем с векторами и матрицами !!! A[i]
+   end;
+for i:=1 to p do
+for j:=1 to q do
+ begin
+     readln (f,s2);
+       SG2.cells[i,j]:=s2; //работаем с векторами и матрицами !!! A[i]
+   end;
+CloseFile (f);
+Ed1.Text:=inttostr(m);
+Ed2.Text:=inttostr(n);
+Ed3.Text:=inttostr(p);
+Ed4.Text:=inttostr(q);
+SG1.ColCount:=m+1;
+SG1.rowCount:=n+1;
+SG2.ColCount:=p+1;
+SG2.rowCount:=q+1;
+trbar1.position:=tr;
+end;
+
+end;
+
+end.
