@@ -1,0 +1,201 @@
+object Form2: TForm2
+  Left = 500
+  Top = 125
+  Width = 716
+  Height = 647
+  Caption = 'Form2'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object lb: TLabel
+    Left = 128
+    Top = 88
+    Width = 407
+    Height = 39
+    Caption = #1058#1091#1090' '#1090#1080#1087#1086' '#1090#1077#1082#1089#1090' '#1084#1077#1085#1103#1077#1090#1089#1103
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object b: TBevel
+    Left = 176
+    Top = 368
+    Width = 185
+    Height = 161
+  end
+  object lb1: TLabel
+    Left = 128
+    Top = 232
+    Width = 407
+    Height = 39
+    Caption = #1058#1091#1090' '#1090#1080#1087#1086' '#1090#1077#1082#1089#1090' '#1084#1077#1085#1103#1077#1090#1089#1103
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object l1: TLabel
+    Left = 640
+    Top = 32
+    Width = 20
+    Height = 39
+    Caption = '0'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object l2: TLabel
+    Left = 640
+    Top = 104
+    Width = 20
+    Height = 39
+    Caption = '0'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object l3: TLabel
+    Left = 640
+    Top = 176
+    Width = 20
+    Height = 39
+    Caption = '0'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object l4: TLabel
+    Left = 640
+    Top = 248
+    Width = 20
+    Height = 39
+    Caption = '0'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Visible = False
+  end
+  object e2: TEdit
+    Left = 144
+    Top = 160
+    Width = 177
+    Height = 50
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -35
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+  end
+  object baton21: TBitBtn
+    Left = 184
+    Top = 448
+    Width = 171
+    Height = 73
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -35
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 1
+    Kind = bkClose
+  end
+  object baton22: TBitBtn
+    Left = 184
+    Top = 376
+    Width = 169
+    Height = 73
+    Caption = 'Back'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -35
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 2
+  end
+  object e22: TEdit
+    Left = 144
+    Top = 296
+    Width = 177
+    Height = 50
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -35
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 3
+    Visible = False
+  end
+  object SG1: TStringGrid
+    Left = 80
+    Top = 160
+    Width = 465
+    Height = 105
+    TabOrder = 4
+    Visible = False
+  end
+  object ee1: TEdit
+    Left = 600
+    Top = 80
+    Width = 81
+    Height = 21
+    TabOrder = 5
+    Visible = False
+  end
+  object ee2: TEdit
+    Left = 600
+    Top = 152
+    Width = 81
+    Height = 21
+    TabOrder = 6
+    Visible = False
+  end
+  object ee3: TEdit
+    Left = 600
+    Top = 224
+    Width = 81
+    Height = 21
+    TabOrder = 7
+    Visible = False
+  end
+  object ee4: TEdit
+    Left = 600
+    Top = 296
+    Width = 81
+    Height = 21
+    TabOrder = 8
+    Visible = False
+  end
+end
