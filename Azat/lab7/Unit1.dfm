@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 192
-  Top = 125
+  Left = 237
+  Top = 256
   Align = alClient
   BorderStyle = bsDialog
   BorderWidth = 1

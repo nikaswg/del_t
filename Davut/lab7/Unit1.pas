@@ -46,7 +46,7 @@ begin
    if cb1.ItemIndex=0
    then begin
      txt1.Visible:=true;
-     txt1.Caption:='Дан текст. Все слова, длина которых равна длине слова максимальной длины, заменить на слово максимальной длины.';
+     txt1.Caption:='Дан текст. Удалить лишние пробелы между словами';
    end;
    if cb1.ItemIndex=1
    then begin
@@ -57,69 +57,37 @@ end;
 
 procedure TForm1.rb1Click(Sender: TObject);
 var
-  text: string;
-  words: array[1..100] of string; // Массив для хранения слов
-  maxLength, i, wordCount: Integer;
-  maxLengthWord: string;
-  currentWord: string;
-  ch: Char;
-  result: string;
+  inputText, cleanedText: string;
+  i: Integer;
+  inSpace: Boolean;
 begin
-  Text:=m1.Text;
-  wordCount := 0;
-  currentWord := '';
+  inputText:=m1.Text;
+  cleanedText := '';
+  inSpace := False;
+
+  for i := 1 to Length(inputText) do
+  begin
+    if inputText[i] <> ' ' then
+    begin
+      cleanedText := cleanedText + inputText[i];
+      inSpace := False;
+    end
+    else if not inSpace then
+    begin
+      cleanedText := cleanedText + ' ';
+      inSpace := True;
+    end;
+  end;
+
+  // Удаляем пробелы в начале и конце
+  if (Length(cleanedText) > 0) and (cleanedText[1] = ' ') then
+    Delete(cleanedText, 1, 1);
   
-  for i := 1 to Length(text) do
-  begin
-    ch := text[i];
-    
-    if (ch <> ' ') and (ch <> '.') and (ch <> ',') and (ch <> ';') and (ch <> '!') and (ch <> '?') then
-      currentWord := currentWord + ch
-    else
-    begin
-      if currentWord <> '' then
-      begin
-        wordCount := wordCount + 1;
-        words[wordCount] := currentWord;
-        currentWord := '';
-      end;
-    end;
-  end;
-
-  // Добавляем последнее слово, если оно есть
-  if currentWord <> '' then
-  begin
-    wordCount := wordCount + 1;
-    words[wordCount] := currentWord;
-  end;
-
-  // Находим максимальную длину слова
-  maxLength := 0;
-  for i := 1 to wordCount do
-  begin
-    if Length(words[i]) > maxLength then
-    begin
-      maxLength := Length(words[i]);
-      maxLengthWord := words[i];
-    end;
-  end;
-
-  // Заменяем слова максимальной длины
-  for i := 1 to wordCount do
-  begin
-    if Length(words[i]) = maxLength then
-      words[i] := maxLengthWord;
-  end;
-
-  // Выводим измененный текст
-  for i := 1 to wordCount do
-  begin
-    result:=result+words[i]+' ';
-  end;
-
-  m2.Text:=result;
+  if (Length(cleanedText) > 0) and (cleanedText[Length(cleanedText)] = ' ') then
+    Delete(cleanedText, Length(cleanedText), 1);
+  m2.Text:=cleanedText;
   txt1.Visible:=true;
-  txt1.Caption:='1)	Дан текст. Все слова, длина которых равна длине слова максимальной длины, заменить на слово максимальной длины.';
+  txt1.Caption:='Дан текст. Удалить лишние пробелы между словами.';
   cb1.ItemIndex:=0;
 end;
 
@@ -184,7 +152,7 @@ Begin
   end;
     m2.Text:=result;
     txt1.Visible:=true;
-    txt1.Caption:='2)	Дан текст. Слова в тексте разделены пробелами. Вычеркнуть из текста все повторяющиеся слова.';
+    txt1.Caption:='Дан текст. Слова в тексте разделены пробелами. Вычеркнуть из текста все повторяющиеся слова.';
     cb1.ItemIndex:=1;
 End;
 

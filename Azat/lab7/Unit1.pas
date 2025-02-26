@@ -46,12 +46,12 @@ begin
    if cb1.ItemIndex=0
    then begin
      txt1.Visible:=true;
-     txt1.Caption:='Дан текст. Все слова, длина которых равна длине слова максимальной длины, заменить на слово максимальной длины.';
+     txt1.Caption:='Дан текст. Слова в тексте отделены одним пробелом. В конце текста точка. Определить, какой процент слов в тексте содержит удвоенную согласную.';
    end;
    if cb1.ItemIndex=1
    then begin
      txt1.Visible:=true;
-     txt1.Caption:='Дан текст. Слова в тексте разделены пробелами. Вычеркнуть из текста все повторяющиеся слова.';
+     txt1.Caption:='В тексте вставить вместо одного пробела запятую и пробел, вместо двух пробелов - двоеточие и пробел, вместо трех и более пробелов тире и пробел.';
    end;
 end;
 
@@ -114,73 +114,45 @@ begin
   else
     m2.Text:='Нет слов в тексте.';
   txt1.Visible:=true;
-  txt1.Caption:='1)	Дан текст. Все слова, длина которых равна длине слова максимальной длины, заменить на слово максимальной длины.';
+  txt1.Caption:='Дан текст. Слова в тексте отделены одним пробелом. В конце текста точка. Определить, какой процент слов в тексте содержит удвоенную согласную.';
   cb1.ItemIndex:=0;
 end;
 
 
 procedure TForm1.rb2Click(Sender: TObject);
 var
-  s, result, word: string;
-  i,j: integer;
-  words: array of string;
-  found: boolean;
+  Str, Str1: string;
+  i, c: integer;
+const
+  s1: string = ', ';
+  s2: string = ': ';
+  s3: string = '- ';
 Begin
-  s:=m1.Text;
-  result := '';  // Итоговая строка
-  SetLength(words, 0);  // Массив для хранения уникальных слов
-  i := 1;  // Инициализация индекса
-  while i <= length(s) do
+  str:=m1.Text;
+  Str1 := '';
+  c := 0;
+  for i := 1 to length(Str) do 
   begin
-    if s[i] in ['.', ',', '!', '?', ';', ':', '-', '(', ')', '"', ''''] then
+    if Str[i] = ' ' then 
     begin
-      // Если встречаем знак препинания, добавляем его в результат
-      if result <> '' then
-        result := result + ' ';  // Добавляем пробел перед знаком
-      result := result + s[i];  // Добавляем знак препинания
-      i := i + 1;  // Переходим к следующему символу
-    end
-    else if s[i] <> ' ' then
+      c := c + 1;
+    end 
+    else 
     begin
-      // Формируем слово
-      word := '';
-      while (i <= length(s)) and (s[i] <> ' ') and not (s[i] in ['.', ',', '!', '?', ';', ':', '-', '(', ')', '"', '''']) do
-      begin
-        word := word + s[i];
-        i := i + 1;
-      end;
-
-      // Проверяем, есть ли такое слово в массиве
-      found := false;
-
-      for j := 0 to High(words) do
-      begin
-        if words[j] = word then
-        begin
-          found := true;
-          break;
-        end;
-      end;
-
-      // Если слово уникально, добавляем его в результат и массив
-      if not found then
-      begin
-        if result <> '' then
-          result := result + ' ';  // Добавляем пробел перед новым словом
-        result := result + word;    // Добавляем слово в результат
-
-        // Добавляем слово в массив
-        SetLength(words, Length(words) + 1);
-        words[High(words)] := word;
-      end;
-    end
-    else
-      i := i + 1;  // Пропускаем пробелы
-  end;
-    m2.Text:=result;
-    txt1.Visible:=true;
-    txt1.Caption:='2)	Дан текст. Слова в тексте разделены пробелами. Вычеркнуть из текста все повторяющиеся слова.';
-    cb1.ItemIndex:=1;
+      if c = 1 then 
+        Str1 := Str1 + s1;
+      if c = 2 then 
+        Str1 := Str1 + s2;
+      if c >= 3 then 
+        Str1 := Str1 + s3;
+      c := 0;
+      Str1 := Str1 + Str[i];
+    end;
+   end;
+   m2.Text:=str1;
+   txt1.Visible:=true;
+   txt1.Caption:='В тексте вставить вместо одного пробела запятую и пробел, вместо двух пробелов - двоеточие и пробел, вместо трех и более пробелов тире и пробел.';
+   cb1.ItemIndex:=1;
 End;
 
 end.
