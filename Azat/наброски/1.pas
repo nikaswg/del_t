@@ -3,7 +3,8 @@
   i, j, D1, D2: integer;
 
 const
-  s1: string = 'бвгджзкйлмнпрстфхцчшщъь';
+  s1: string = 'бвгджзкйлмнпрстфхцчшщъьqwertyuiopasdfghjklzxcvbnm';
+  
 
 begin
   readln(Str);
