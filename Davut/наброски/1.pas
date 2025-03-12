@@ -1,6 +1,4 @@
-﻿program RemoveExtraSpaces;
-
-var
+﻿var
   inputText, cleanedText: string;
   i: Integer;
   inSpace: Boolean;
